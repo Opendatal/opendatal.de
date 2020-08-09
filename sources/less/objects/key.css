@@ -1,0 +1,39 @@
+@charset "UTF-8";
+/* KEY ELEMENT */
+.key {
+  align-items: stretch;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.key-vFull {
+  min-height: 100vh;
+}
+.key-up,
+.key-down {
+  flex-shrink: 0;
+}
+.key-up .barGroup-vLeft:not(.barGroup-vNav) :first-child,
+.key-down .barGroup-vLeft:not(.barGroup-vNav) :first-child {
+  margin-left: 10px;
+}
+.key-content {
+  flex: 1;
+  padding: 40px 20px;
+}
+.key-vMedium .key-content {
+  padding-bottom: 120px;
+  padding-top: 120px;
+}
+.key-vLarge .key-content {
+  padding-bottom: 240px;
+  padding-top: 240px;
+}
+.key-vFull .key-content {
+  display: flex;
+  align-items: center;
+}
+.key-vFull .key-content > .container {
+  flex: 1;
+}

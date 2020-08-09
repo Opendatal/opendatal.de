@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,700italic,400italic,100italic,100);
+
+@import (optional) "../../sources/less/viur"; // Include Project
+
+// Color and Shadow Sets
+@mainColor: #005CA9; // The corporate color - defining most of the looks.
+@complementColor: #009BD9; // A color used to sit next to the maincolor.
+@darkColor: #004c8b;
+@textColor: #222;
+@invTextColor: #f4f4f4;
+@backgroundColor: #fff;
+
+@successColor: #4cad42; // Green
+@warnColor: #f5b639; // Orange
+@failColor: #f44336; // Red
+@hintColor: #1da7e0; // Blue
+
+@defaultShadow: 1px 2px 3px rgba(0,0,0,0.3);
+
+// Font Stacks
+@bodyFonts: 'Roboto', 'Source Sans Pro', 'Open Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Default font stack.
+@headFonts: 'Roboto', 'Source Sans Pro', 'Open Sans', sans-serif; // Fonts for headlines, blockquotes and alike.
+@monoFonts: 'Source Code Pro', Courier, monospace; // Fonts for code pieces.
+
+// Put your custom color, shadow and font overwrites here. Try this:
+// @btnDangerBgColor: orange;
+
+// Font Sizes
+@fontSizeSmall: 16px;
+@fontSizeMedium: 17px;
+@fontSizeLarge: 19px;
+@fontSizeExtraLarge: 20px;
+
+// Spaces
+@outerSpace: 40px; // Space around objects, boxes etc.
+@innerSpace: 40px; // Space within objects: mostly paddings.
+@bottomSpace: 50px; // The distance between two sections.
+@gridSpace: 20px; // Space between grid items.
+
+// Width, Height and Media Queries
+@pageWidth: 1300px; // max-width of the centered container.
+@paragraphWidth: 720px; // max-width of text paragraphs.
+
+@breakSmall: 37.5em; // smart phones: 600px / 16px = 37.5em;
+@breakMedium: 56.25em; // tablets: 900px / 16px = 56.25em;
+@breakLarge: 75em; // screens: 1200px / 16px = 75em;
+@breakXlarge: 112.5em; // huge screeens: 1800px / 16px = 112.5em;
+@break2x: 2; // hiDPI displays
+@breakPrint: print; // make it printable!
+
+.wrap-vNav {
+  transform:translateY(-100%);
+  position: fixed;
+  background-color: #fff;
+  transition: transform .3s ease;
+  .zIndex('nav',0);
+  .mq-max(@breakMedium, {&.is-open {transform: translateY(0); padding-top:150px;}});
+  .mq-min(@breakMedium, {
+    transform: translateY(0);
+    .is-scrolled & {
+      margin-top: 0;
+    }
+  });
+  .mq-min(@breakXlarge, {margin-top: @outerSpace;});
+
+}
+.mainNav {}
+
+.header {
+  position:fixed;
+  width:100%;
+  background:#fff;
+  padding: @innerSpace;
+  align-items: stretch;
+  display: flex;
+  min-height: 35px;
+  text-align: center;
+  justify-content: space-between;
+  .zIndex('overlay', 0);
+  .mq-min(@breakMedium,{
+    pointer-events: none;
+    background:transparent;
+    position: relative;
+    .mq-max(@breakXlarge, {padding-top: @innerSpace*2;});
+  });
+}
+
+.header-title {
+  font-size:1.6em;
+  text-align: left;
+  pointer-events: auto;
+}
+
+.odwdarkblue {
+  color: @darkColor;
+}
+
+.odwblue {
+  color: @mainColor;
+}
+
+.odwlightblue {
+  color: @complementColor;
+}
+
+.odwlogo {
+  display: block;
+  border-color: @complementColor @complementColor transparent transparent;
+  border-style: solid;
+  border-width: @innerSpace/2;
+  width: 0;
+  height: 0;
+  pointer-events: auto;
+}
+
+.odwlogo:hover {
+  border-color: @mainColor @mainColor transparent transparent;
+}
+
+.burger {
+  display: block;
+  align-self: center;
+  background:#fff;
+  .mq-min(@breakMedium, {display:none;});
+}
+
+.burger-box {
+  .burger(@outerSpace, 5px, 8px, @mainColor);
+}
+
+.burger.is-active .burger-box {
+  .burger-to-cross(5px, 8px, @mainColor);
+}
+
+.paragraph a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.bind-vSeperate {
+  border-bottom: 1px solid rgba(0, 117, 191, 0.2);
+}
+
+.content-vTop {
+  .mq-max(@breakMedium,{margin-top:150px;});
+}
+
+.wrap-vInvert {
+  background-color: @complementColor;
+  & * {color:#fff;}
+  & .paragraph a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  &:after {
+    content:'';
+    display:block;
+    border-color: #fff #fff transparent transparent;
+    border-style:solid;
+    border-width:@innerSpace/2;
+    width:0;
+    height:0;
+    position: absolute;
+    top:40px;
+    right:40px;
+    .mq-max(@breakMedium,{
+      opacity: .3;
+    });
+  }
+}
+
+.wrap-vMagenta {
+  background-color: @actionColor;
+}
+
+.projectList {
+}
+
+.media {
+  display:flex;
+  margin:-10px;
+  flex-wrap: wrap;
+}
+
+.media-item {
+  padding: 10px;
+  display:flex;
+  width:100%;
+  .mq-min(@breakSmall, {
+    width: 50%;
+  });
+  .mq-min(@breakMedium, {
+    width: 25%;
+  });
+}
+
+.media-link {
+  border:1px solid #ccc;
+  display:flex;
+  flex-direction: column;
+}
+
+.media-content {
+  padding:20px;
+  font-size:.7em;
+}
+
+.footer {
+  background-color:@darkColor;
+  & * {
+    color:#fff;
+  }
+  & *:hover {
+    color:@complementColor;
+  }
+  &:after {
+    content:'';
+    display:block;
+    border-color: #fff #fff transparent transparent;
+    border-style:solid;
+    border-width:@innerSpace/2;
+    width:0;
+    height:0;
+    position: absolute;
+    top:40px;
+    right:40px;
+  }
+}
+
+.footer a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  &:hover {
+    border-bottom: 1px solid fadeout(@complementColor, 30%);
+  }
+}
+
+.btn {font-weight: inherit;}
+
+.key-headline {color:#fff;}
+
+.partner-img {
+  display:inline-block;
+  width: 49%;
+  .mq-min(@breakMedium,{
+    width: 24%;
+  });
+}
+
+.eyecatcher {color:#fff; background-color:@actionColor; border-bottom-color:darken(@actionColor,15%)!important; font-weight:bold;}
+
+.data-treasures-image {
+  .mq-max(@breakMedium, {
+    margin-top: 120px;
+  });
+  .mq-min(@breakMedium, {
+    width: 30vw;
+  });
+}
+.data-treasures-headline {
+  margin-top: -1px!important;
+  padding: 20px;
+  font-size: 100%;
+  color: @actionTextColor;
+  background-color: white;
+  .mq-min(@breakMedium, {
+    width: 30vw;
+  });
+}

@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/* ViUR Ignite CSS 2016 */
+
+// This is the master file.
+// It imports all less files in their intended order for easy mass-inclusion.
+// Should you need specific files, you can easily customize the imports.
+
+// Reset
+@import "foundation/reset"; // resets all browsers to the same base state.
+
+// Fundamental parts: positioning, type and utilities
+@import "foundation/appconf"; // variables and constants.
+@import "foundation/basic"; // classic basic styling.
+@import "foundation/util"; // utility classes.
+@import "foundation/wrap"; // page wrappers.
+@import "foundation/bar"; // horizontal bars.
+
+// Generic elements: buttons, forms and messages
+@import "generic/button"; // some classic buttons.
+@import "generic/tooltip"; // lightweight tooltips.
+@import "generic/badge"; // badges and marker.
+@import "generic/burger"; // menu burger.
+
+// Objects
+@import "objects/image"; // base64 encoded images, image shapes and thumbnails.
+@import "objects/key"; // menu burger.
+
+// Configuration and Mixins
+@import (optional) "../../../sources/less/icon"; // ViUR SVG icons.
+@import "tools/zindex"; // organize your z-indexes.
+@import "tools/state"; // is-, has-, no- etc.
+
+// Media Queries
+@import "tools/mediaqueries"; // really simple media queries.
